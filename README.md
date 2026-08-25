@@ -55,12 +55,26 @@ And on top of them:
 
 ---
 
+## 📲 GrantTap — live control for local coding agents
+
+[granttap.com](https://granttap.com) · [npm](https://www.npmjs.com/package/granttap-mcp) · [MCP bridge](https://github.com/sergii-ziborov/granttap-mcp) · [relay](https://github.com/sergii-ziborov/granttap-relay)
+
+**See · decide · continue.** A native iPhone and Apple Watch command center for the coding agents running on your own computers — Claude Code, Codex, Cursor, Copilot, and Grok Build — over an end-to-end encrypted channel where prompts and credentials never leave the machine in the clear.
+
+- **See** — live task timelines, tool and skill usage, failures, context pressure, and waiting time, across several computers at once.
+- **Decide** — approve or deny commands and answer the agent's questions, with routing that separates what genuinely needs a human from what agents can settle between themselves.
+- **Continue** — send the next turn by voice, photo, or file, schedule tasks, and open a full session chat from the wrist.
+- **Project Mesh** — dependencies and resource claims tracked when several agents work the same project.
+
+The zero-knowledge relay (Cloudflare Workers and Durable Objects) and the MCP bridge and approval hooks are open source; the iOS and watchOS app is not.
+
+---
+
 ## 🚀 Products
 
 | Product | What it is |
 | --- | --- |
 | 📡 [**RadioChron**](https://radiochron.com) | Pure-Rust Wi-Fi and BLE diagnostics — typed verdicts, native collectors, embedded targets, MCP, desktop, and unattended IoT agents |
-| ⌚ [**GrantTap**](https://granttap.com) | End-to-end encrypted questions, status updates, and approval requests between coding agents and a person on iPhone or Apple Watch |
 | 🌿 [**BranchPilot**](https://branchpilot.com) | Desktop Git client for local repositories and hosted source providers |
 | 🗣️ [**Tellwick**](https://tellwick.com) | Multilingual AI copilot with native speech and diarization, translation, notes, calendar workflows, and structured exports |
 | 🧞 [**ApplyDjin**](https://applydjinn.com/) | Live hiring intelligence, evidence-aware profile matching, and human-reviewed AI application documents |
