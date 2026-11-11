@@ -31,7 +31,7 @@ The same software is [Cisco Secure DDoS Edge Protection](https://www.cisco.com/s
 
 ---
 
-## 🛰️ Hostwatch — evidence and control for servers you own
+## Hostwatch — evidence and control for servers you own
 
 <img src="assets/logos/hostwatch.png" width="36" height="36" alt="Hostwatch"> [gethostwatch.com](https://gethostwatch.com) · [protection](https://gethostwatch.com/protection/) · [compute](https://gethostwatch.com/compute/) · [MCP](https://gethostwatch.com/mcp)
 
@@ -50,7 +50,7 @@ The workspace follows you on the web, iPhone, and iPad, and through an authorize
 
 ---
 
-## 🕸️ Weavatrix — evidence infrastructure for AI software agents
+## Weavatrix — evidence infrastructure for AI software agents
 
 <img src="assets/logos/weavatrix.png" width="36" height="36" alt="Weavatrix"> [weavatrix.com](https://weavatrix.com) · [organization](https://github.com/Weavatrix) · [ecosystem map](https://weavatrix.com/ecosystem) · [npm](https://www.npmjs.com/package/weavatrix)
 
@@ -94,7 +94,7 @@ Results graduate into public product claims only when their exact evidence and l
 
 ---
 
-## 📲 GrantTap — live control for local coding agents
+## GrantTap — live control for local coding agents
 
 <img src="assets/logos/granttap.png" width="36" height="36" alt="GrantTap"> [granttap.com](https://granttap.com) · [npm](https://www.npmjs.com/package/granttap-mcp) · [MCP bridge](https://github.com/sergii-ziborov/granttap-mcp) · [relay](https://github.com/sergii-ziborov/granttap-relay) · [terminal](https://github.com/sergii-ziborov/granttap-term)
 
