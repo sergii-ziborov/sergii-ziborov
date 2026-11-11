@@ -33,7 +33,7 @@ The same software is [Cisco Secure DDoS Edge Protection](https://www.cisco.com/s
 
 ## 🛰️ Hostwatch — evidence and control for servers you own
 
-[gethostwatch.com](https://gethostwatch.com) · [protection](https://gethostwatch.com/protection/) · [compute](https://gethostwatch.com/compute/) · [MCP](https://gethostwatch.com/mcp)
+<img src="assets/logos/hostwatch.png" width="36" height="36" alt="Hostwatch"> [gethostwatch.com](https://gethostwatch.com) · [protection](https://gethostwatch.com/protection/) · [compute](https://gethostwatch.com/compute/) · [MCP](https://gethostwatch.com/mcp)
 
 **See the pressure. Know the cause. Control the response.** A Go agent on your own server records host health, workloads, services, and HTTP evidence. Hostwatch Cloud, or a privately installed control plane, coordinates what you permit. It stays outside the request path: traffic still arrives through the network and the edge provider you already chose.
 
@@ -52,7 +52,7 @@ The workspace follows you on the web, iPhone, and iPad, and through an authorize
 
 ## 🕸️ Weavatrix — evidence infrastructure for AI software agents
 
-[weavatrix.com](https://weavatrix.com) · [organization](https://github.com/Weavatrix) · [ecosystem map](https://weavatrix.com/ecosystem) · [npm](https://www.npmjs.com/package/weavatrix)
+<img src="assets/logos/weavatrix.png" width="36" height="36" alt="Weavatrix"> [weavatrix.com](https://weavatrix.com) · [organization](https://github.com/Weavatrix) · [ecosystem map](https://weavatrix.com/ecosystem) · [npm](https://www.npmjs.com/package/weavatrix)
 
 **Build agents that understand before they act.** Weavatrix turns source, configuration, Git history, and architecture rules into durable evidence that agents can query, verify, remember — and change only through a separate, guarded boundary. Installing one boundary never silently grants another.
 
@@ -96,7 +96,7 @@ Results graduate into public product claims only when their exact evidence and l
 
 ## 📲 GrantTap — live control for local coding agents
 
-[granttap.com](https://granttap.com) · [npm](https://www.npmjs.com/package/granttap-mcp) · [MCP bridge](https://github.com/sergii-ziborov/granttap-mcp) · [relay](https://github.com/sergii-ziborov/granttap-relay) · [terminal](https://github.com/sergii-ziborov/granttap-term)
+<img src="assets/logos/granttap.png" width="36" height="36" alt="GrantTap"> [granttap.com](https://granttap.com) · [npm](https://www.npmjs.com/package/granttap-mcp) · [MCP bridge](https://github.com/sergii-ziborov/granttap-mcp) · [relay](https://github.com/sergii-ziborov/granttap-relay) · [terminal](https://github.com/sergii-ziborov/granttap-term)
 
 **See · decide · continue.** A native command center for the coding agents running on your own computers — Claude Code, Codex, Cursor, and Grok Build — on Mac, iPhone, iPad, and Apple Watch. Prompts and credentials never leave the machine in the clear. The relay routes ciphertext.
 
@@ -112,15 +112,29 @@ The MCP bridge, approval hooks, relay, and terminal desk are open source. The Ma
 
 ## 🚀 Products
 
-| Product | What it is |
-| --- | --- |
-| 📡 [**RadioChron**](https://radiochron.com) | Pure-Rust Wi-Fi and BLE diagnostics — typed verdicts, native collectors, embedded targets, MCP, desktop, and unattended IoT agents |
-| 🌿 [**BranchPilot**](https://branchpilot.com) | Desktop Git client for local repositories and hosted source providers |
-| 🗣️ [**Tellwick**](https://tellwick.com) | Multilingual AI copilot with native speech and diarization, translation, notes, calendar workflows, and structured exports. Live notes run Whisper large-v3-turbo on Hetero |
-| 🧞 [**ApplyDjin**](https://applydjinn.com/) | Live hiring intelligence — technologies, stacks, vacancies, companies, salaries — with requirement evidence split into core, required, context, and nice-to-have. Matching names the skill that actually unlocks more roles. CVs, cover letters, portfolios, and recruiter notes are drafted from that evidence by a model and stay editable until a person approves them. [iPhone app](https://applydjinn.com/iphone) on the App Store |
-| 🛠️ [**Kablay IL**](https://kablay.co.il/en) | Multilingual marketplace connecting people in Israel with verified home-repair and renovation professionals |
-| 🇺🇸 [**Kablay US**](https://kablay.us) | Verified home-service marketplace for Southwest Washington — Clark County, WA |
-| 📱 [**EPPY**](https://eppy.co.il/en/) | Multilingual service and commerce platform for Apple and Android repairs in Israel |
+EdgeHawk, Hostwatch, Weavatrix, Hetero, and GrantTap are the systems above. What follows is everything else that is public, read in the order a visitor needs: products people use, the App Store catalog, then smaller tools.
+
+| | Product | What it is |
+| --- | --- | --- |
+| <img src="assets/logos/applydjinn.png" width="36" height="36" alt=""> | [**ApplyDjin**](https://applydjinn.com/) | Live hiring intelligence — technologies, stacks, vacancies, companies, salaries — with requirement evidence split into core, required, context, and nice-to-have. Matching names the skill that actually unlocks more roles. CVs, cover letters, portfolios, and recruiter notes are drafted from that evidence by a model and stay editable until a person approves them. [iPhone app](https://apps.apple.com/us/app/applydjinn/id6820561847) |
+| <img src="assets/logos/tellwick.png" width="36" height="36" alt=""> | [**Tellwick**](https://tellwick.com) | Multilingual AI copilot with native speech and diarization, translation, notes, calendar workflows, and structured exports. Live notes run Whisper large-v3-turbo on Hetero |
+| <img src="assets/logos/kablay-il.jpg" width="36" height="36" alt=""> | [**Kablay IL**](https://kablay.co.il/en) | Multilingual marketplace connecting people in Israel with verified home-repair and renovation professionals. [iPhone and iPad](https://apps.apple.com/us/app/kablay-il/id6809115380) |
+| <img src="assets/logos/kablay-us.png" width="36" height="36" alt=""> | [**Kablay US**](https://kablay.us) | Verified home-service marketplace for Southwest Washington — Clark County, WA |
+| <img src="assets/logos/eppy.png" width="36" height="36" alt=""> | [**EPPY**](https://eppy.co.il/en/) | Multilingual service and commerce platform for Apple and Android repairs in Israel |
+
+### On the App Store
+
+The public developer page, [Serhii Ziborov](https://apps.apple.com/us/developer/serhii-ziborov/id6809115382), currently lists these five. ApplyDjin and Kablay IL are described above. The other three are the on-device compilers and the game.
+
+| | App | What it is |
+| --- | --- | --- |
+| <img src="assets/logos/crabrix.png" width="36" height="36" alt=""> | [**Crabrix**](https://apps.apple.com/us/app/crabrix-rust-compiler/id6809502653) | Rust on iPhone and iPad. The compiler ships in the app, with an offline academy and a local project workspace. [crabrix.com](https://crabrix.com) |
+| <img src="assets/logos/gopherforge.png" width="36" height="36" alt=""> | [**GopherForge**](https://apps.apple.com/us/app/gopherforge-go-compiler/id6809702319) | Go on iPhone and iPad: an on-device compiler, debugger, tests, and a learning library. [gopherforge.app](https://gopherforge.app) |
+| <img src="assets/logos/echo.jpg" width="36" height="36" alt=""> | [**ECHO**](https://apps.apple.com/us/app/echo-survive-your-past/id6811673094) | A science-fiction route puzzle for iPhone, iPad, and Apple Watch. The path you take comes back as the hazard |
+
+### Smaller tools
+
+[**RadioChron**](https://radiochron.com) is the pure-Rust Wi-Fi and BLE diagnostics stack: typed verdicts, native collectors, and an MCP server. [**BranchPilot**](https://github.com/sergii-ziborov/BranchPilot) is the local desktop Git client. Its home is that repository.
 
 The models are not a side folder. Hetero is the inference runtime. Hostwatch is how a model spans machines you own. Tellwick, ApplyDjin, and the film stack call models at the point of the product: live speech, reviewed application documents, and vision. GrantTap is the control surface for the agents and the host model they are allowed to use.
 
