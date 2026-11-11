@@ -4,9 +4,9 @@
 
 > Making AI coding agents understand the systems they change — and giving humans evidence and control over what happens next.
 
-At [EdgeHawk](https://edgehawk.io/), I work across the frontend, REST API, and analytics layers of a carrier-grade DDoS defense platform for large telecom and service-provider networks.
+At [EdgeHawk](https://edgehawk.io/), I work across the frontend, controller REST API, analytics, and operator documentation of a carrier-grade DDoS defense platform for large telecom and service-provider networks. That platform is what Cisco ships as [Secure DDoS Edge Protection](https://www.cisco.com/site/us/en/products/security/ddos-edge-protection/index.html).
 
-Outside work I build evidence infrastructure for AI agents, MCP servers, Rust systems libraries, and the products that sit on top of them. TypeScript is my delivery stack; Rust is where the engines live — scanners, graphs, parsers, protocol stacks, collectors, and codecs.
+Outside work I build evidence infrastructure for AI agents, exact open-model inference, origin-side protection for servers I can actually see, MCP servers, and the products that sit on top of them. TypeScript is my delivery stack; Rust is where the engines live — scanners, graphs, parsers, protocol stacks, collectors, codecs, and inference.
 
 ---
 
@@ -21,13 +21,32 @@ Outside work I build evidence infrastructure for AI agents, MCP servers, Rust sy
   </a>
 </p>
 
-**Full-stack product engineer** working across the **frontend, controller REST API, analytics, and edge-analytics** layers.
+**Full-stack product engineer** working across the **frontend, controller REST API, analytics, edge-analytics, and the Cisco operator documentation**.
 
-[EdgeHawk](https://edgehawk.io/) builds a distributed, cloud-native cyber-defense overlay for CSP and telecom networks. Its central, containerized controller manages detectors running on peering routers; the detectors analyze network telemetry close to the traffic source and can apply ingress ACL-based mitigation when an attack is detected.
+[EdgeHawk](https://edgehawk.io/) builds a distributed, cloud-native cyber-defense overlay for CSP and telecom networks. A containerized controller manages detectors deployed on peering, mobile-access, and broadband routers. Each detector runs in spare CPU and memory on the router, analyzes flow telemetry close to the traffic source, and can push ingress mitigation back onto that router — ACL, and where the deployment uses them, FlowSpec, RTBH, and reroute — so attack traffic does not have to be hauled to a scrubbing center.
 
-My work spans the operational UI and the systems behind security configuration, platform health, real-time attack visibility, event analytics, and mitigation orchestration — the product surfaces used to understand and operate distributed DDoS defense.
+The same software is [Cisco Secure DDoS Edge Protection](https://www.cisco.com/site/us/en/products/security/ddos-edge-protection/index.html): detectors packaged for Cisco IOS XR, and a controller that shares protective state across the network. My work is the operational surface around that loop — security configuration, platform health, real-time attack visibility, event analytics, mitigation orchestration — and the operator documentation published for the Cisco solution.
 
-[Website →](https://edgehawk.io/) · [GitHub organization →](https://github.com/edgehawk)
+[EdgeHawk →](https://edgehawk.io/) · [Cisco Secure DDoS Edge Protection →](https://www.cisco.com/site/us/en/products/security/ddos-edge-protection/index.html) · [GitHub organization →](https://github.com/edgehawk)
+
+---
+
+## 🛰️ Hostwatch — evidence and control for servers you own
+
+[gethostwatch.com](https://gethostwatch.com) · [protection](https://gethostwatch.com/protection/) · [compute](https://gethostwatch.com/compute/) · [MCP](https://gethostwatch.com/mcp)
+
+**See the pressure. Know the cause. Control the response.** A Go agent on your own server records host health, workloads, services, and HTTP evidence. Hostwatch Cloud, or a privately installed control plane, coordinates what you permit. It stays outside the request path: traffic still arrives through the network and the edge provider you already chose.
+
+Protection is scoped to what the evidence can support.
+
+- **Scanners and discovery** — sensitive-path probes, URL enumeration, exploit-endpoint discovery. With Nginx configured, a client limit or deny is previewed before it goes live, then attributed and set to expire.
+- **HTTP route pressure** — distributed URL floods and expensive routes, read against coverage and measured harm. A high request count alone is not an attack.
+- **Host pressure** — SYN, UDP, and ICMP counters from the Linux agent. These are node-wide signals, not a packet-level attacker list, and they do not install a packet filter by themselves.
+- **A saturated uplink** stays an upstream problem. Hostwatch does not sell CDN, Anycast, or volumetric scrubbing.
+
+The same account lends machines to a [compute network](https://gethostwatch.com/compute/). [Hetero](#hetero) spreads a model's layers across the memory they offer — a Mac GPU through Metal, a graphics card through Vulkan or DX12, or plain RAM — and the answer stays the model's own greedy decoding. Clients still see one OpenAI- or Ollama-compatible endpoint.
+
+The workspace follows you on the web, iPhone, and iPad, and through an authorized MCP assistant. A 7-day trial covers the first server. Private Enterprise is the full control plane under an installation license, with no separate cloud subscription.
 
 ---
 
@@ -51,22 +70,43 @@ And on top of them:
 - 🧵 [**Weavatrix Loom**](https://github.com/Weavatrix/weavatrix-loom) + [**Loom Studio**](https://github.com/sergii-ziborov/loom-studio) — compose systems from verified capabilities as typed graphs, then compile ordinary standalone Rust.
 - 🧹 [**SweepLoom**](https://github.com/Weavatrix/sweeploom) — local-first workstation resource manager: disk, projects, terminals, AI agent sessions, browser. Deterministic and inspectable; no LLM in the destructive path.
 - 🔎 [**Weavatrix SEO**](https://github.com/Weavatrix/weavatrix-seo) — source-aware search intelligence: audit the site you shipped against the code that actually produced it.
-- 🧬 **Weavatrix Hetero** *(private research)* — hardware-adaptive inference on Apple Silicon, treating the Metal GPU, the Neural Engine through Core ML, and the CPU as distinct resources behind a measurement-driven Rust scheduler. Results graduate into public product claims only when their exact evidence and limits are reproducible.
+
+<a id="hetero"></a>
+
+### 🧬 Hetero — exact inference, on every processor and across machines
+
+*Private research.* [Hostwatch compute](https://gethostwatch.com/compute/) is the public door.
+
+Hetero runs open models so every token is the model's own greedy decoding: bit for bit what one process would compute. Drafts and lookups only propose. A verify pass checks them. Lower precision stays off the default path when it fails that contract.
+
+| Engine | Where it runs |
+| --- | --- |
+| Metal | A Mac GPU — F16 weights, GQA decode attention, every draft kind |
+| WebGPU | A graphics card through Vulkan or DX12, or Apple's GPU, in WGSL |
+| CPU | Portable kernels whose bits do not depend on the machine or the thread count |
+| Stages | Other machines, through Hostwatch: pipeline layers or a share of every layer |
+
+`hetero serve` speaks OpenAI's API and Ollama's, including tools and streaming, so existing clients do not change. A model that fits in no single machine is split by measured memory first and speed second. On the published benches, Qwen3-4B (7.3 GiB of layers) ran across two Linux machines of 4.5 GiB that each refused it alone, with logits bit-identical to one process. The same prompt produced the same text on Metal, WebGPU, Vulkan, and CPUs.
+
+Speech uses the same contract. A Whisper server over a product's own whisper.cpp is faster per request than that product's default mode, with byte-identical output, and [Tellwick](https://tellwick.com) Notes runs Whisper large-v3-turbo live on it: audio in, speech boundaries, partials and finals. An optional local vision backend (Qwen3-VL through llama.cpp) can sit beside the text engines. It is labeled as a separate backend. The exactness claims do not transfer to it.
+
+Results graduate into public product claims only when their exact evidence and limits are reproducible.
 
 ---
 
 ## 📲 GrantTap — live control for local coding agents
 
-[granttap.com](https://granttap.com) · [npm](https://www.npmjs.com/package/granttap-mcp) · [MCP bridge](https://github.com/sergii-ziborov/granttap-mcp) · [relay](https://github.com/sergii-ziborov/granttap-relay)
+[granttap.com](https://granttap.com) · [npm](https://www.npmjs.com/package/granttap-mcp) · [MCP bridge](https://github.com/sergii-ziborov/granttap-mcp) · [relay](https://github.com/sergii-ziborov/granttap-relay) · [terminal](https://github.com/sergii-ziborov/granttap-term)
 
-**See · decide · continue.** A native iPhone and Apple Watch command center for the coding agents running on your own computers — Claude Code, Codex, Cursor, Copilot, and Grok Build — over an end-to-end encrypted channel where prompts and credentials never leave the machine in the clear.
+**See · decide · continue.** A native command center for the coding agents running on your own computers — Claude Code, Codex, Cursor, and Grok Build — on Mac, iPhone, iPad, and Apple Watch. Prompts and credentials never leave the machine in the clear. The relay routes ciphertext.
 
-- **See** — live task timelines, tool and skill usage, failures, context pressure, and waiting time, across several computers at once.
-- **Decide** — approve or deny commands and answer the agent's questions, with routing that separates what genuinely needs a human from what agents can settle between themselves.
-- **Continue** — send the next turn by voice, photo, or file, schedule tasks, and open a full session chat from the wrist.
-- **Project Mesh** — dependencies and resource claims tracked when several agents work the same project.
+- **See** — the agent, model, computer, workspace, task timeline, tool and skill usage, failures, and context pressure, across several computers at once.
+- **Decide** — approvals, questions, and failed deliveries surface in Needs You. Technical questions can stay agent-to-agent. Product, security, destructive actions, and unresolved conflicts reach a person. The watch is a glance, a decision, a short reply, or a new voice task.
+- **Continue** — the next turn by voice, photo, or file, on the same local session.
+- **Mesh** — one project scope for repositories, people, computers, and rules. A Task keeps one goal when a different agent or computer continues it. Governance allows, asks, or denies skills, MCP servers, and shell. Auto-accept runs only after the effective policy permits the call. Roles say why a refusal happened, and a refusal never reaches the computer.
+- **[GrantTap Term](https://github.com/sergii-ziborov/granttap-term)** — the desk inside a terminal you already have open, including SSH. Chats for Grok, Claude, and Codex, a task queue, the repository mesh, files, a text browser, and lessons. `granttap-term mcp` is the offline **granttap-local** server: stdio only, no HTTP, no OAuth. It does not replace the phone or the relay.
 
-The zero-knowledge relay (Cloudflare Workers and Durable Objects) and the MCP bridge and approval hooks are open source; the iOS and watchOS app is not.
+The MCP bridge, approval hooks, relay, and terminal desk are open source. The Mac, iOS, iPadOS, and watchOS apps are not. Mac, iPhone, and iPad are available by invitation while the first commercial release is prepared.
 
 ---
 
@@ -76,11 +116,13 @@ The zero-knowledge relay (Cloudflare Workers and Durable Objects) and the MCP br
 | --- | --- |
 | 📡 [**RadioChron**](https://radiochron.com) | Pure-Rust Wi-Fi and BLE diagnostics — typed verdicts, native collectors, embedded targets, MCP, desktop, and unattended IoT agents |
 | 🌿 [**BranchPilot**](https://branchpilot.com) | Desktop Git client for local repositories and hosted source providers |
-| 🗣️ [**Tellwick**](https://tellwick.com) | Multilingual AI copilot with native speech and diarization, translation, notes, calendar workflows, and structured exports |
-| 🧞 [**ApplyDjin**](https://applydjinn.com/) | Live hiring intelligence, evidence-aware profile matching, and human-reviewed AI application documents |
+| 🗣️ [**Tellwick**](https://tellwick.com) | Multilingual AI copilot with native speech and diarization, translation, notes, calendar workflows, and structured exports. Live notes run Whisper large-v3-turbo on Hetero |
+| 🧞 [**ApplyDjin**](https://applydjinn.com/) | Live hiring intelligence — technologies, stacks, vacancies, companies, salaries — with requirement evidence split into core, required, context, and nice-to-have. Matching names the skill that actually unlocks more roles. CVs, cover letters, portfolios, and recruiter notes are drafted from that evidence by a model and stay editable until a person approves them. [iPhone app](https://applydjinn.com/iphone) on the App Store |
 | 🛠️ [**Kablay IL**](https://kablay.co.il/en) | Multilingual marketplace connecting people in Israel with verified home-repair and renovation professionals |
 | 🇺🇸 [**Kablay US**](https://kablay.us) | Verified home-service marketplace for Southwest Washington — Clark County, WA |
 | 📱 [**EPPY**](https://eppy.co.il/en/) | Multilingual service and commerce platform for Apple and Android repairs in Israel |
+
+The models are not a side folder. Hetero is the inference runtime. Hostwatch is how a model spans machines you own. Tellwick, ApplyDjin, and the film stack call models at the point of the product: live speech, reviewed application documents, and vision. GrantTap is the control surface for the agents and the host model they are allowed to use.
 
 ---
 
@@ -96,7 +138,7 @@ Plus [**mcport**](https://github.com/sergii-ziborov/mcport) — a Tokio-free MCP
 
 ### 🎬 ReelForge & SightLoom — programmatic video and vision
 
-Video composition as a fluent clip graph, driven by automation and agents rather than a GUI, with an edge-native vision pipeline feeding it.
+Video composition as a fluent clip graph, driven by automation and agents rather than a GUI. [SightLoom](https://github.com/sergii-ziborov/SightLoom) turns detections into tracks, identities, events, and queryable video memory. The index stays model-neutral. Host adapters run ONNX detectors and re-identification embeddings — YOLOv8 and a person re-id network among them — and keep the evidence pack next to the decision. The render graph stays deterministic.
 
 [ReelForge](https://github.com/sergii-ziborov/ReelForge) · [Host](https://github.com/sergii-ziborov/ReelForge-Host) · [Capture](https://github.com/sergii-ziborov/ReelForge-Capture) · [Studio](https://github.com/sergii-ziborov/ReelForge-Studio) · [Intelligence](https://github.com/sergii-ziborov/ReelForge-Intelligence) · [SightLoom](https://github.com/sergii-ziborov/SightLoom)
 
@@ -136,6 +178,9 @@ Compiles a task-complete, revision-bound evidence packet and proves which requir
 **AI & coding agents**
 <p>
   <a href="https://modelcontextprotocol.io/"><img alt="Model Context Protocol" src="https://img.shields.io/badge/-Model%20Context%20Protocol-000000?style=flat-square"></a>
+  <a href="https://onnx.ai/"><img alt="ONNX" src="https://img.shields.io/badge/-ONNX-005CED?style=flat-square&logo=onnx&logoColor=white"></a>
+  <a href="https://developer.apple.com/metal/"><img alt="Metal" src="https://img.shields.io/badge/-Metal-000000?style=flat-square&logo=apple&logoColor=white"></a>
+  <a href="https://www.w3.org/TR/webgpu/"><img alt="WebGPU" src="https://img.shields.io/badge/-WebGPU-5B4FE8?style=flat-square"></a>
   <a href="https://docs.anthropic.com/en/docs/claude-code/overview"><img alt="Claude Code" src="https://img.shields.io/badge/-Claude%20Code-D97757?style=flat-square&logo=anthropic&logoColor=white"></a>
   <a href="https://developers.openai.com/codex/"><img alt="OpenAI Codex" src="https://img.shields.io/badge/-OpenAI%20Codex-000000?style=flat-square&logo=openai&logoColor=white"></a>
   <a href="https://platform.openai.com/docs/"><img alt="OpenAI API" src="https://img.shields.io/badge/-OpenAI%20API-412991?style=flat-square&logo=openai&logoColor=white"></a>
@@ -170,9 +215,11 @@ Compiles a task-complete, revision-bound evidence packet and proves which requir
 **Security & systems**
 <p>
   <a href="https://edgehawk.io/"><img alt="Cybersecurity" src="https://img.shields.io/badge/-Cybersecurity-B91C1C?style=flat-square"></a>
+  <a href="https://www.cisco.com/site/us/en/products/security/ddos-edge-protection/index.html"><img alt="Cisco IOS XR" src="https://img.shields.io/badge/-Cisco%20IOS%20XR-1BA0D7?style=flat-square&logo=cisco&logoColor=white"></a>
   <a href="https://www.kernel.org/"><img alt="Linux" src="https://img.shields.io/badge/-Linux-FCC624?style=flat-square&logo=linux&logoColor=000000"></a>
+  <a href="https://nginx.org/"><img alt="Nginx" src="https://img.shields.io/badge/-Nginx-009639?style=flat-square&logo=nginx&logoColor=white"></a>
   <a href="https://webassembly.org/"><img alt="WebAssembly" src="https://img.shields.io/badge/-WebAssembly-654FF0?style=flat-square&logo=webassembly&logoColor=white"></a>
-  <a href="https://developer.apple.com/metal/"><img alt="Apple Silicon: Metal and Core ML" src="https://img.shields.io/badge/-Metal%20%2F%20Core%20ML-000000?style=flat-square&logo=apple&logoColor=white"></a>
+  <a href="https://developer.apple.com/documentation/coreml"><img alt="Core ML" src="https://img.shields.io/badge/-Core%20ML-000000?style=flat-square&logo=apple&logoColor=white"></a>
   <a href="https://github.com/sergii-ziborov/blindplane"><img alt="Applied cryptography" src="https://img.shields.io/badge/-Applied%20Cryptography-0F766E?style=flat-square&logo=letsencrypt&logoColor=white"></a>
   <a href="https://github.com/sergii-ziborov/radiochron"><img alt="Wi-Fi and BLE" src="https://img.shields.io/badge/-Wi--Fi%20%2F%20BLE-0EA5E9?style=flat-square&logo=bluetooth&logoColor=white"></a>
 </p>
@@ -182,9 +229,10 @@ Compiles a task-complete, revision-bound evidence packet and proves which requir
 ## 🤖 What I'm Doing
 
 - **Making AI coding agents understand code** — deterministic graphs, scanners, repository intelligence, change impact, and evidence they can reason over.
-- **Building an MCP ecosystem** — a family of servers across code intelligence, refactoring, radio diagnostics, approvals, context compilation, and mesh identity, on top of a Tokio-free Rust MCP runtime.
+- **Running models exactly** — Metal, WebGPU, and portable CPU inference whose tokens match the model's own greedy decode, including models split across machines through Hostwatch.
+- **Building an MCP ecosystem** — servers across code intelligence, refactoring, radio diagnostics, server operations, approvals, context compilation, and mesh identity, on top of a Tokio-free Rust MCP runtime.
 - **Separating knowing from doing** — read-only evidence, guarded write boundaries, byte-bound previews, and rollback, so an agent never gets a capability it was not explicitly granted.
-- **Engineering network-edge security** — product work across [EdgeHawk](https://edgehawk.io/)'s frontend, REST API, and analytics stack.
+- **Engineering network-edge security** — [EdgeHawk](https://edgehawk.io/) and [Cisco Secure DDoS Edge Protection](https://www.cisco.com/site/us/en/products/security/ddos-edge-protection/index.html) on the carrier side, [Hostwatch](https://gethostwatch.com/protection/) on the origin: evidence first, a scoped action second, and an honest line where upstream volumetric defense still has to do the work.
 - **Publishing measurements, not adjectives** — parity checks, fixtures, caveats, and reproduction commands, including the rows where someone else wins.
 
 ---
